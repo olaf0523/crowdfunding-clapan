@@ -160,7 +160,7 @@ const CheckoutPage = ({
                 <h3 className="font-bold text-md sm:text-xl text-black">
                   {reward.title}
                 </h3>
-                <span className="bg-[#E23D43] text-white text-xs sm:text-md font-semibold px-3 sm:px-5 py-1 sm:py-2 rounded">
+                <span className="bg-primary text-white text-xs sm:text-md font-semibold px-3 sm:px-5 py-1 sm:py-2 rounded">
                   選択中のリターン
                 </span>
               </div>
@@ -223,7 +223,7 @@ const CheckoutPage = ({
         <div className="text-center max-w-5xl mx-auto mb-8 sm:mb-10">
           <button
             onClick={handlePurchase}
-            className="bg-[#E23D43] text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            className="bg-primary text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             確　認
           </button>
@@ -248,11 +248,11 @@ const CheckoutPage = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="メールアドレスを入力してください"
-                  className="flex-grow p-3 border border-gray-300 bg-white  focus:outline-none focus:ring-2 focus:ring-[#E23D43] w-full sm:w-1/2 text-md"
+                  className="flex-grow p-3 border border-gray-300 bg-white  focus:outline-none focus:ring-2 focus:ring-primary w-full sm:w-1/2 text-md"
                 />
                 <button
                   onClick={handleContinueSupport}
-                  className="bg-[#E23D43] cursor-pointer text-white  py-3 px-6  hover:bg-red-700 transition-colors duration-300 text-md w-full sm:w-1/2 "
+                  className="bg-primary cursor-pointer text-white  py-3 px-6  hover:bg-red-700 transition-colors duration-300 text-md w-full sm:w-1/2 "
                 >
                   支援を続ける
                 </button>

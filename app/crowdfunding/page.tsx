@@ -129,13 +129,6 @@ const CrowdfundingPage = () => {
 
   }, [currentIndex, isTransitionEnabled, loopedProjects.length]);
 
-
-
-
-
-  
-
-
   return (
     <div className="min-h-screen bg-white text-gray-700">
       
