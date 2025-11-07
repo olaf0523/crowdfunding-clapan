@@ -219,29 +219,6 @@ const CrowdfundingPage = () => {
             </svg>
           </button>
         </div>
-        {/* === END OF CAROUSEL SECTION === */}
-
-        {/* Sorting & Filtering Bar
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8 bg-white rounded-lg shadow-sm p-4">
-          <div className="flex space-x-1 mb-4 md:mb-0 overflow-x-auto w-full md:w-auto">
-            <span className="px-4 py-2 text-gray-500 whitespace-nowrap">並べ替え</span>
-            <button className="px-4 py-2 text-red-600 border-b-2 border-red-600 font-medium whitespace-nowrap">人気順</button>
-            <button className="px-4 py-2 text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">新着順</button>
-            <button className="px-4 py-2 text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">終了日が近い順</button>
-            <button className="px-4 py-2 text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">支援総額</button>
-          </div>
-          
-          <div className="flex space-x-4">
-            <button className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded transition-colors whitespace-nowrap">
-              さらに絞り込む
-            </button>
-            <div className="hidden md:flex space-x-4">
-              <button className="text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">マイページ</button>
-              <button className="text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">気になる</button>
-              <button className="text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap">閲覧履歴</button>
-            </div>
-          </div>
-        </div> */}
 
         {/* Project Grid Section */}
         <div className="grid grid-cols-2 lg:grid-cols-3 sm:max-w-5xl max-w-md mx-auto gap-4 md:gap-y-8 mb-12 px-4 md:px-4  ">

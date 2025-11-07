@@ -153,7 +153,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, lightMode =
                                                 <div className="flex items-baseline space-x-2 justify-start">
                                                     <p className="text-sm sm:text-base text-white">達成率</p>
                                                     <p className="font-bold text-lg text-white">
-                                                        {project.achievementRate}%
+                                                        {project.achievementRate}
                                                     </p>
                                                 </div>
                                             </div>

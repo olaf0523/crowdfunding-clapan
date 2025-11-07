@@ -5,8 +5,9 @@ import Image from "next/image";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-black">
-      {/* Main Content */}
+    <div className="relative bg-[url('/assets/mainPage/main-page-bg1.png')] bg-cover bg-center min-h-screen bg-black">
+      <div className="absolute inset-0 bg-[#1D2635]/60 "></div>
+      
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative flex mt-20 md:mt-[142px] justify-center overflow-hidden">
