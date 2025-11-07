@@ -9,10 +9,14 @@ interface Video {
   title: string;
   image: string;
   categoryLabel: string;
+  userLabel: string;
+  viewCount: string;
+  viewDate: number;
 }
 
 interface VideoCardProps {
   video: Video;
+  detail?: boolean;
 }
 
 type CategoryType = "バラエティー" | "スピリチュアル" | "ミュージック" | "ドキュメンタリー";
@@ -26,7 +30,7 @@ const categoryStyles: Record<CategoryType, string> = {
   ドキュメンタリー: "bg-[#A442F4] text-white"
 };
 
-const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
+const VideoCard: React.FC<VideoCardProps> = ({ video, detail = false }) => {
   return (
     <Link href={`/videofunding/${video.id}`} passHref>
       <div className="relative bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow border border-[#E9E9E9] cursor-pointer">
@@ -48,6 +52,16 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
           <h3 className="font-bold text-center sm:mb-3 mb-1 line-clamp-2 text-black text-sm sm:text-lg">
             {video.title}
           </h3>
+          {detail && (
+            <div className="flex flex-col gap-1 justify-start align-start px-2 text-[14px]">
+              <p className="text-black line-clamp-1">
+                {video.userLabel}
+              </p>
+              <p className="text-gray-500 line-clamp-1">
+                視聴回数：{video.viewCount}・{video.viewDate}日前
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </Link>

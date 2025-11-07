@@ -161,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Buttons */}
-          <div className="items-center space-x-4 lg:flex">
+          <div>
             <Link
               href={"/search"}
               className="p-2 rounded-full hover:bg-gray-100 transition-colors ml-auto"
@@ -189,17 +189,18 @@ const Navbar: React.FC<NavbarProps> = ({
                 />
               </svg>
             </Link>
+          </div>
 
+          <div className="hidden md:flex gap-3">
             <button
-              className={`bg-none hidden md:block  ${
-                theme === "dark"
-                  ? " border border-white text-white"
-                  : "text-black border border-black "
-              } text-sm font-semibold rounded-full px-10 py-3 hover:bg-gray-100 transition-colors `}
+              className={`bg-none ${theme === "dark"
+                ? " border border-white text-white"
+                : "text-black border border-black "
+                } text-sm font-semibold rounded-full px-10 py-3 hover:bg-gray-100 transition-colors `}
             >
               Get Start
             </button>
-            <button className="bg-[#FF0066] hidden md:block border border-red-600 text-white text-sm font-semibold rounded-full px-10 py-3 hover:bg-red-700 transition-colors">
+            <button className="bg-[#FF0066] border border-red-600 text-white text-sm font-semibold rounded-full px-10 py-3 hover:bg-red-700 transition-colors">
               ログイン
             </button>
           </div>

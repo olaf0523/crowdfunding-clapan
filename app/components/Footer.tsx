@@ -19,7 +19,7 @@ const Footer = () => {
               className="flex flex-col justify-center items-center"
             >
               <Image
-                src="/assets/common/logo.png"
+                src="/assets/common/logo_footer.png"
                 width={210}
                 height={60}
                 alt=""
@@ -81,7 +81,7 @@ const Footer = () => {
           <div className="flex-shrink-0 ">
             <Link href="#">
               <Image
-                src="/assets/common/logo.png"
+                src="/assets/common/logo_footer.png"
                 width={210}
                 height={60}
                 alt=""
