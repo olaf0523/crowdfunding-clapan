@@ -212,7 +212,7 @@ const CheckoutPage = ({
         <div className="text-center max-w-5xl mx-auto mb-8 sm:mb-10">
           <button
             onClick={handlePurchase}
-            className="bg-[#FF0066] text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            className="bg-[#FF0066] text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-[#FF0066]/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             購入する
           </button>
@@ -241,7 +241,7 @@ const CheckoutPage = ({
               />
               <button
                 onClick={handleContinueSupport}
-                className="bg-[#FF0066] cursor-pointer text-white  py-3 px-6  hover:bg-red-700 transition-colors duration-300 text-md w-full sm:w-1/2 "
+                className="bg-[#FF0066] cursor-pointer text-white  py-3 px-6  hover:bg-[#FF0066]/80 transition-colors duration-300 text-md w-full sm:w-1/2 "
               >
                 支援を続ける
               </button>

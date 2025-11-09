@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {/* Progress Bar */}
           <div className="w-full border border-black/20 rounded-full h-3 sm:mb-4 mb-1">
             <div
-              className="bg-gradient-to-r from-[#FF0101] to-[#FFA101] h-3 rounded-full"
+              className="bg-gradient-to-r from-[#FF0066] to-[#FFA101] h-3 rounded-full"
               style={{ width: `${Math.min(project.achievementRate, 100)}%` }}
             ></div>
           </div>

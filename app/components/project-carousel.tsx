@@ -198,7 +198,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, lightMode =
             <button
                 type="button"
                 onClick={handlePrevBanner}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#FF0066] hover:bg-red-600 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16  flex items-center justify-center z-20 transition-colors"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#FF0066] hover:bg-[#FF0066]/80 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16  flex items-center justify-center z-20 transition-colors"
                 aria-label="Previous banner"
             >
                 <svg
@@ -221,7 +221,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, lightMode =
             <button
                 type="button"
                 onClick={handleNextBanner}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#FF0066] hover:bg-red-600 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16  flex items-center justify-center z-20 transition-colors"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#FF0066] hover:bg-[#FF0066]/80 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16  flex items-center justify-center z-20 transition-colors"
                 aria-label="Next banner"
             >
                 <svg

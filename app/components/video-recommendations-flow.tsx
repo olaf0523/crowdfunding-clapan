@@ -67,7 +67,7 @@ const VideoRecommendationsFlow: React.FC<VideoRecommendationsFlowProps> = ({
                     {/* Navigation Arrows */}
                     <button
                         onClick={scrollLeft}
-                        className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#EB4040] hover:bg-red-900 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors -ml-5"
+                        className="cursor-pointer absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#EB4040] hover:bg-[#EB4040]/80 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors -ml-5"
                         aria-label="Scroll left"
                     >
                         <svg
@@ -88,7 +88,7 @@ const VideoRecommendationsFlow: React.FC<VideoRecommendationsFlowProps> = ({
 
                     <button
                         onClick={scrollRight}
-                        className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#EB4040] hover:bg-red-900 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors -mr-5"
+                        className="cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#EB4040] hover:bg-[#EB4040]/80 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-colors -mr-5"
                         aria-label="Scroll right"
                     >
                         <svg

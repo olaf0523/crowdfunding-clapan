@@ -117,7 +117,8 @@ const SupportPage = ({
 
     // Pass via query string (encoded JSON)
     const data = encodeURIComponent(JSON.stringify(payload));
-    router.push(`/crowdfunding/checkout?data=${data}`);
+    router.push(`/crowdfunding/checkout?data=""`);
+    // router.push(`/crowdfunding/checkout?data=${data}`);
   };
 
   const handleContinueSupport = () => {
@@ -130,7 +131,7 @@ const SupportPage = ({
         {/* Progress Bar */}
         <div className="max-w-5xl mx-auto w-full my-6 sm:my-8">
           <div className="bg-[#D9D9D9] rounded-full h-6 sm:h-8 overflow-hidden relative">
-            <div className="bg-[#E91E0D] h-full w-1/3 flex items-center justify-start rounded-full pl-3 sm:pl-4">
+            <div className="bg-[#FF0066] h-full w-1/3 flex items-center justify-start rounded-full pl-3 sm:pl-4">
               <span className="text-white font-semibold text-sm sm:text-md">
                 ❶ 入力
               </span>
@@ -165,7 +166,7 @@ const SupportPage = ({
               {/* Progress Bar */}
               <div className="w-full bg-white border border-black/20 rounded-full h-3 sm:h-4 mb-2">
                 <div
-                  className="bg-gradient-to-r from-[#FF0101] to-[#FFA101] h-3 sm:h-4 rounded-full"
+                  className="bg-gradient-to-r from-[#FF0066] to-[#FFA101] h-3 sm:h-4 rounded-full"
                   style={{ width: `50%` }}
                 ></div>
               </div>
@@ -302,7 +303,7 @@ const SupportPage = ({
           <div className="text-center max-w-5xl mx-auto mb-8 sm:mb-10">
             <button
               onClick={handlePurchase}
-              className="bg-[#FF0066] text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              className="bg-[#FF0066] text-white cursor-pointer font-bold py-3 sm:py-4 px-12 sm:px-20 rounded-full text-md sm:text-lg hover:bg-[#FF0066]/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             >
               購入する
             </button>
@@ -331,7 +332,7 @@ const SupportPage = ({
               />
               <button
                 onClick={handleContinueSupport}
-                className="bg-[#FF0066] cursor-pointer text-white  py-3 px-6  hover:bg-red-700 transition-colors duration-300 text-md w-full sm:w-1/2 "
+                className="bg-[#FF0066] cursor-pointer text-white  py-3 px-6  hover:bg-[#FF0066]/80 transition-colors duration-300 text-md w-full sm:w-1/2 "
               >
                 支援を続ける
               </button>

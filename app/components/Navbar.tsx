@@ -1,6 +1,6 @@
 // Navbar.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,22 +15,35 @@ const Navbar: React.FC<NavbarProps> = ({
   background = "invisible",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll event
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 10); // Trigger blur after 10px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Colors based on theme
   const textColor = theme === "dark" ? "text-white" : "text-black";
   const iconFill = theme === "dark" ? "white" : "black";
 
-  // Backgrounds based on prop
+  // Backgrounds based on prop and scroll state
   const bgClass =
     background === "color"
-      ? "bg-[#FFFFFF]" // You can change to your desired bg color
-      : "bg-none";
-
-  const pathname = usePathname();
+      ? "bg-[#FFFFFF]"
+      : isScrolled
+        ? "bg-black/80 backdrop-blur-md"
+        : "bg-transparent";
 
   return (
     <nav
-      className={`fixed top-0 left-0 z-50 w-full ${bgClass}   shadow-sm h-20`}
+      className={`fixed top-0 left-0 z-50 w-full ${bgClass} transition-all duration-300 ${isScrolled ? "shadow-md" : "shadow-none"
+        } h-20`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
@@ -47,14 +60,14 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center space-x-4 lg:space-x-8">
+          <div className="hidden xl:flex items-center space-x-4 lg:space-x-8">
             <Link
-              href="#"
-              className={`flex items-center gap-2 text-sm ${textColor} hover:text-red-600 transition-colors duration-200`}
+              href="/"
+              className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
             >
               <svg
-                width="29"
-                height="31"
+                width="32"
+                height="32"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   d="M21.6992 12.2227C22.1282 12.2229 22.4795 12.5748 22.4795 13.0039V22.1846C22.4795 23.9991 21.0098 25.4685 19.1953 25.4688H5.84082C4.02611 25.4688 2.55566 23.9993 2.55566 22.1846V13.0039C2.55566 12.5747 2.90772 12.2227 3.33691 12.2227C3.76596 12.2228 4.11719 12.5748 4.11719 13.0039V22.1846C4.11719 23.1367 4.88867 23.9082 5.84082 23.9082H7.56348V18.0117C7.56348 15.2748 9.78065 13.0577 12.5176 13.0576C15.2546 13.0576 17.4717 15.2747 17.4717 18.0117V23.9082H19.1953C20.1473 23.908 20.918 23.1366 20.918 22.1846V13.0039C20.918 12.5747 21.27 12.2227 21.6992 12.2227ZM12.5176 14.6191C10.6432 14.6192 9.125 16.1373 9.125 18.0117V23.9082H15.9102V18.0117C15.9102 16.1373 14.392 14.6191 12.5176 14.6191Z"
                   fill={iconFill}
                   stroke={theme === "dark" ? "white" : "black"}
-                  strokeWidth="0.10815"
+                  strokeWidth="0.2"
                 />
                 <path
                   d="M10.2812 1.42432C11.5416 0.246323 13.4955 0.246337 14.7559 1.42432L24.7383 10.7642C25.0343 11.0382 25.0668 11.4909 24.8252 11.8071L24.7734 11.8687C24.4811 12.1844 23.9854 12.2007 23.6689 11.9038L13.6904 2.56396C13.0311 1.94798 12.0098 1.94788 11.3506 2.56396L1.36816 11.9038C1.07154 12.1782 0.620948 12.1815 0.321289 11.9233L0.263672 11.8687C-0.0106484 11.572 -0.0139311 11.1214 0.244141 10.8218L0.298828 10.7642L10.2812 1.42432Z"
@@ -76,12 +89,12 @@ const Navbar: React.FC<NavbarProps> = ({
             </Link>
 
             <Link
-              href="#"
-              className={`flex items-center gap-2 text-sm ${textColor} hover:text-red-600 transition-colors duration-200`}
+              href="/crowdfunding"
+              className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
             >
               <svg
-                width="32"
-                height="30"
+                width="35"
+                height="35"
                 viewBox="0 0 32 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   d="M30.8982 10.5349C30.8982 8.90829 29.5759 7.58594 27.9493 7.58594C26.3227 7.58594 25.0004 8.90829 25.0004 10.5349V11.1566H23.6124C23.3882 11.1566 23.2009 11.3391 23.2009 11.568C23.2009 11.797 23.3834 11.9795 23.6124 11.9795H25.0004V26.5838C25.0004 26.8079 25.1829 26.9953 25.4118 26.9953C25.6408 26.9953 25.8233 26.8127 25.8233 26.5838C25.8233 25.4109 26.7812 24.453 27.9541 24.453C29.1271 24.453 30.0759 25.4018 30.0849 26.5699C30.0753 27.7525 29.1084 28.7152 27.9258 28.7152H4.09157C2.90898 28.7152 1.94207 27.7525 1.93243 26.5699C1.94207 25.4018 2.89031 24.453 4.06325 24.453C5.2362 24.453 6.19407 25.4066 6.19407 26.5838C6.19407 26.8079 6.37661 26.9953 6.60554 26.9953C6.83447 26.9953 7.017 26.8127 7.017 26.5838V11.9795H8.55442C8.77853 11.9795 8.96589 11.797 8.96589 11.568C8.96589 11.3391 8.78335 11.1566 8.55442 11.1566H7.017V10.5349C7.017 8.90829 5.69465 7.58594 4.06807 7.58594C2.44149 7.58594 1.11914 8.90829 1.11914 10.5349V26.588C1.14264 28.2098 2.46981 29.5231 4.09639 29.5231H27.9312C29.5578 29.5231 30.885 28.2098 30.9085 26.588V10.5349H30.8988H30.8982ZM1.92761 10.5349C1.92761 9.36192 2.88549 8.40405 4.05843 8.40405C5.23138 8.40405 6.18926 9.36192 6.18926 10.5349V24.5458C5.65188 23.9849 4.89462 23.6343 4.05843 23.6343C3.22225 23.6343 2.46499 23.9849 1.92761 24.5458V10.5349ZM27.9493 23.6343C27.1125 23.6343 26.3559 23.9849 25.8185 24.5458V10.5349C25.8185 9.36192 26.7721 8.40405 27.9493 8.40405C29.1265 8.40405 30.0801 9.36192 30.0801 10.5349V24.5458C29.5476 23.9849 28.7903 23.6343 27.9493 23.6343Z"
                   fill={iconFill}
                   stroke={theme === "dark" ? "white" : "black"}
-                  strokeWidth="0.315"
+                  strokeWidth="0.4"
                 />
                 <path
                   d="M16.0045 10.6145C17.257 10.6145 18.2757 9.5958 18.2757 8.33851C18.2757 7.08122 17.257 6.0625 16.0045 6.0625C14.7521 6.0625 13.7285 7.08122 13.7285 8.33851C13.7285 9.5958 14.7521 10.6145 16.0045 10.6145ZM16.0045 6.88483C16.8082 6.88483 17.4582 7.53907 17.4582 8.34273C17.4582 9.14638 16.804 9.80062 16.0045 9.80062C15.2051 9.80062 14.5466 9.14638 14.5466 8.34273C14.5466 7.53907 15.2009 6.88483 16.0045 6.88483Z"
@@ -121,12 +134,12 @@ const Navbar: React.FC<NavbarProps> = ({
             </Link>
 
             <Link
-              href="#"
-              className={`flex items-center gap-2 text-sm ${textColor} hover:text-red-600 transition-colors duration-200`}
+              href="videofunding"
+              className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
             >
               <svg
-                width="30"
-                height="27"
+                width="35"
+                height="35"
                 viewBox="0 0 30 27"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +208,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 className={`bg-none border-2 ${theme === "dark"
                   ? "border-white text-white"
                   : "text-black border-black"
-                  } text-sm font-semibold rounded-full px-10 py-3 hover:bg-[#FF0066] transition-colors hover:text-white hover:border-[#FF0066]`}
+                  } text-sm font-semibold rounded-full px-10 py-3  hover:bg-gray-200  transition-colors`}
               >
                 Get Start
               </a>
@@ -209,7 +222,6 @@ const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Hamburger Button */}
           <div className="lg:hidden flex items-center">
-            {/* {pathname === "/" && ( */}
             <button
               className="p-2 rounded-full hover:bg-gray-100 transition-colors ml-auto"
               aria-label="Search"
@@ -237,7 +249,6 @@ const Navbar: React.FC<NavbarProps> = ({
                 />
               </svg>
             </button>
-            {/* )} */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={` p-2 rounded-md  text-3xl transition ${theme === "dark"
@@ -254,34 +265,34 @@ const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div
-          className={`lg:hidden shadow-lg border-t-1 border-gray-200/70 px-4 py-3 space-y-3 ${theme === "dark"
+          className={`lg:hidden shadow-lg border-t-1 border-gray-200/70 px-4 py-3 space-y-1 ${theme === "dark"
             ? "bg-[#1D2635]/70 backdrop-blur-sm"
             : "bg-white/100"
             }`}
         >
           <Link
-            href="#"
-            className={`block text-center ${textColor} hover:text-red-600 `}
+            href="/"
+            className={`block text-center ${textColor} hover:text-red-600 hover:bg-black/20 py-3`}
           >
             ホーム
           </Link>
           <Link
-            href="#"
-            className={`block text-center ${textColor} hover:text-red-600 mt-5 `}
+            href="/crowdfunding"
+            className={`block text-center ${textColor} hover:text-red-600 hover:bg-black/20 py-3`}
           >
             プロジェクト
           </Link>
           <Link
-            href="#"
-            className={`block text-center ${textColor} hover:text-red-600 mt-5 `}
+            href="/videofunding"
+            className={`block text-center ${textColor} hover:text-red-600 hover:bg-black/20 py-3`}
           >
             動画一覧
           </Link>
           <div className="flex flex-col space-y-2 pt-3 ">
-            <button className="bg-white border border-gray-400 text-gray-800 text-sm font-semibold rounded-full px-5 py-2 hover:bg-gray-100 transition-colors">
+            <button className="bg-white border-2 border-gray-400 text-gray-800 text-sm font-semibold rounded-full px-5 py-3 hover:bg-gray-200 transition-colors">
               Get Start
             </button>
-            <button className="bg-[#FF0066] border border-red-600 text-white text-sm font-semibold rounded-full px-5 py-2 hover:bg-red-700 transition-colors">
+            <button className="bg-[#FF0066] border-2 border-[#FF0066] text-white text-sm font-semibold rounded-full px-5 py-3 hover:bg-white hover:text-[#FF0066] transition-colors">
               ログイン
             </button>
           </div>

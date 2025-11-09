@@ -22,6 +22,12 @@ export interface BannerProject {
   daysLeft: string;
 }
 
+export interface BannerVideo {
+  id: number;
+  image: string;
+  categoryLabel: string;
+}
+
 export interface Video {
   id: number;
   title: string;
@@ -291,4 +297,32 @@ export const bannerProjects: BannerProject[] = [
     supporters: '32人',
     daysLeft: '18日'
   }
+];
+
+export const bannerVideos: BannerVideo[] = [
+  {
+    id: 1,
+    image: "/assets/crowdfunding/cf-4.png",
+    categoryLabel: "バラエティー" as const,
+  },
+  {
+    id: 2,
+    image: "/assets/crowdfunding/cf-5.png",
+    categoryLabel: "スピリチュアル" as const,
+  },
+  {
+    id: 3,
+    image: "/assets/crowdfunding/cf-3.png",
+    categoryLabel: "ドキュメンタリー" as const,
+  },
+  {
+    id: 4,
+    image: "/assets/crowdfunding/cf-2.png",
+    categoryLabel: "ミュージック" as const,
+  },
+  {
+    id: 5,
+    image: "/assets/crowdfunding/cf-1.png",
+    categoryLabel: "スピリチュアル" as const,
+  },
 ];
