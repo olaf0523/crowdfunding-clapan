@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type NavbarProps = {
   theme?: "dark" | "light";
@@ -15,6 +16,13 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Check if we are on the landing page
+  const isLanding = pathname === "/";
+
+  // Set logo based on page
+  const logoSrc = isLanding ? "/assets/common/logo_footer.png" : "/assets/common/logo.png";
 
   // Handle scroll event
   useEffect(() => {
@@ -51,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="flex-shrink-10">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/assets/common/logo_footer.png"
+                  src={logoSrc}
                   width={200}
                   height={70}
                   className="sm:w-[210px] sm:h-[60px] w-[170px] h-[50px]"
