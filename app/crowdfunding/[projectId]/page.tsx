@@ -67,7 +67,7 @@ const ProjectDetailPage = ({ params: paramsPromise }: { params: Promise<{ projec
   ];
 
   return (
-    <div className="min-h-screen  bg-white text-gray-700 mx-auto  pt-21 ">
+    <div className="min-h-screen  bg-white text-gray-700 mx-auto md:pt-20 pt-25 ">
 
       <main className='max-w-[1440px] mx-auto'>
         {/* Section 1: Hero Banner */}
@@ -81,7 +81,7 @@ const ProjectDetailPage = ({ params: paramsPromise }: { params: Promise<{ projec
                 <p className="text-lg mb-8 leading-relaxed">{project.description}</p>
                 <Link
                   href={`/crowdfunding/${project.id}/support`}
-                  className="bg-[#FF0066] hover:bg-[#FF0066]/80 text-white font-bold py-3 px-8 sm:w-1/2 rounded-3xl transition-colors inline-block text-center"
+                  className="bg-[#FF0066] hover:bg-[#FF0066]/80 text-white font-bold py-3 px-8 sm:w-1/2 rounded-full transition-colors inline-block text-center"
                 >
                   プロジェクトを支援する
                 </Link>
@@ -102,7 +102,7 @@ const ProjectDetailPage = ({ params: paramsPromise }: { params: Promise<{ projec
           </div>
 
           {/* Mobile Layout */}
-          <div className="lg:hidden h-[50vh] mb-10 flex flex-col">
+          <div className="lg:hidden h-[60vh] mb-10 flex flex-col">
             {/* Top Image */}
             <div className="h-[30vh] relative">
               <Image
@@ -115,13 +115,13 @@ const ProjectDetailPage = ({ params: paramsPromise }: { params: Promise<{ projec
             </div>
 
             {/* Bottom Black Background */}
-            <div className="h-[30vh] bg-black flex items-center justify-center p-6">
-              <div className="text-white text-center">
+            <div className="h-[30vh] bg-black flex items-center p-6">
+              <div className="text-white">
                 <h1 className="sm:text-2xl text-xl  font-bold mb-4">{project.title}</h1>
                 <p className="sm:text-sm text-xs mb-4 line-clamp-3">{project.description}</p>
                 <Link
                   href={`/crowdfunding/${project.id}/support`}
-                  className="bg-[#FF0066] hover:bg-[#FF0066]/80 text-white font-bold py-2 px-6 rounded-lg transition-colors sm:text-sm text-xs inline-block text-center"
+                  className="bg-[#FF0066] hover:bg-[#FF0066]/80 text-white font-bold py-2 px-6 rounded-full transition-colors sm:text-sm text-xs inline-block text-center"
                 >
                   プロジェクトを支援する
                 </Link>
@@ -173,7 +173,7 @@ const ProjectDetailPage = ({ params: paramsPromise }: { params: Promise<{ projec
               <div className="flex space-x-4">
                 <Link
                   href={`/crowdfunding/${project.id}/support`}
-                  className="flex-1 cursor-pointer bg-[#FF0066] hover:bg-[#FF0066]/80 text-white text-xl font-bold py-3 px-6 rounded-3xl transition-colors text-center"
+                  className="flex-1 cursor-pointer bg-[#FF0066] hover:bg-[#FF0066]/80 text-white text-xl font-bold py-3 px-6 rounded-full transition-colors text-center"
                 >
                   プロジェクトを支援する
                 </Link>

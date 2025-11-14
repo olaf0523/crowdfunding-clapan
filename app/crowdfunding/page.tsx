@@ -8,7 +8,7 @@ const CrowdfundingPage = () => {
   return (
     <div className="min-h-screen bg-white text-gray-700">
 
-      <main className="xl:max-w-[1440px] mx-auto px-0  py-16 pt-20">
+      <main className="xl:max-w-[1440px] mx-auto md:py-20 px-0 py-25">
         <ProjectCarousel projects={bannerProjects} />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 sm:max-w-5xl max-w-md mx-auto gap-4 md:gap-y-8 mb-12  px-4 md:px-4  ">

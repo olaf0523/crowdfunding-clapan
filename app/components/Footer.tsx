@@ -1,12 +1,11 @@
 "use client";
 // Footer.tsx
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-[#1D2635] text-gray-300">
-      <div className="mx-auto md:hidden px-4 sm:px-6 lg:px-8 pt-12 pb-6 max-w-[1440px]">
+      <div className="mx-auto md:hidden px-4 sm:px-6 lg:px-8 pt-12 pb-6 md:max-w-[1440px] 2xl:max-w-[1920px]">
         {/* Top Section: Logo + Links */}
         <div
           className="flex flex-col justify-center
@@ -18,10 +17,8 @@ const Footer = () => {
               href="/"
               className="flex flex-col justify-center items-center"
             >
-              <Image
-                src="/assets/common/logo_footer.png"
-                width={210}
-                height={60}
+              <img
+                src="/assets/common/logo-landing-footer-sp.png"
                 alt=""
               />
             </Link>
@@ -74,21 +71,19 @@ const Footer = () => {
           <p className="text-md text-[#D9D9D9]">© 2025 TsukuruTV.</p>
         </div>
       </div>
-      <div className="hidden md:block mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6 max-w-[1440px]">
+      <div className="hidden md:block mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6 md:max-w-[1440px] 2xl:max-w-[1920px]">
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
           <div className="flex-shrink-0 ">
             <Link href="/">
-              <Image
-                src="/assets/common/logo_footer.png"
-                width={210}
-                height={60}
+              <img
+                src="/assets/common/logo-landing-footer-pc.png"
                 alt=""
               />
             </Link>
           </div>
 
           {/* Navigation Sections */}
-          <div className="grid grid-cols-2 gap-6 md:gap-12">
+          <div className="grid grid-cols-2 gap-6 md:gaap-0">
             {/* Main Content Navigation */}
             <div className="flex flex-col space-y-3">
               <Link href="/crowdfunding" className="text-sm font-bold hover:text-white">
