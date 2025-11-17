@@ -7,7 +7,7 @@ const LandingPage = () => {
   return (
     <div className="relative bg-[url('/assets/mainPage/main-page-bg.png')] bg-cover bg-center min-h-screen bg-black">
       <div className="absolute inset-0 bg-[#24293b]/30 "></div>
-      
+
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative flex mt-12 md:mt-[126px] justify-center overflow-hidden">
@@ -33,9 +33,8 @@ const LandingPage = () => {
 
             {/* Tagline */}
             <div className="mb-6 md:mb-20 -mt-10">
-              <p className="text-md sm:text-xl md:text-2xl text-white mb-2 flex flex-col md:flex-row">
-                <span className="block">クリエーターとファンでつくる</span>
-                <span className="block">次世代テレビ</span>
+              <p className="text-md sm:text-xl md:text-2xl text-white mb-2 flex flex-col md:flex-row [text-shadow:3px_3px_5px_rgba(0,0,0,0.35)]">
+                <span className="block font-bold ">クラウドファンディングで作る次世代テレビ</span>
               </p>
             </div>
 
