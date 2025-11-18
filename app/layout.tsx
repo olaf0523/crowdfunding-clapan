@@ -54,7 +54,7 @@ export default function RootLayout({
       <body >
         <div className="min-h-screen maw-w-[1440px] flex flex-col">
           <NavbarWrapper />
-          <main className="flex-grow">
+          <main >
             {children}
           </main>
           <ClientWrapper />

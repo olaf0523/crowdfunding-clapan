@@ -5,10 +5,10 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-[#1D2635] text-gray-300">
-      <div className="mx-auto md:hidden px-4 sm:px-6 lg:px-8 pt-12 pb-6 md:max-w-[1440px] 2xl:max-w-[1920px]">
+      <div className="md:hidden px-6 sm:px-12 lg:px-8 pt-12 pb-6 md:max-w-[1440px] 2xl:max-w-[1920px]">
         {/* Top Section: Logo + Links */}
         <div
-          className="flex flex-col justify-center
+          className="flex flex-col lg:justify-center
          md:flex-row md:justify-between md:items-start gap-8"
         >
           {/* Brand / Logo */}
@@ -19,44 +19,45 @@ const Footer = () => {
             >
               <img
                 src="/assets/common/logo-landing-footer-sp.png"
+                className="w-[200px] sm:w-[347px] md:hidden"
                 alt=""
               />
             </Link>
           </div>
 
           {/* Navigation Sections */}
-          <div className="grid grid-cols-2  gap-6 md:gap-12">
+          <div className="flex flex-row px-4 gap-6 sm:px-7 sm:gap-20 md:gap-12">
             {/* Main Content Navigation */}
             <div className="flex flex-col space-y-3">
-              <a href="/about" className="text-sm font-bold hover:text-white">
+              <a href="/about" className="text-sm sm:text-xl font-bold hover:text-white">
                 つくるテレビとは
               </a>
-              <Link href="/crowdfunding" className="text-sm font-bold hover:text-white">
+              <Link href="/crowdfunding" className="text-sm sm:text-xl font-bold hover:text-white">
                 プロジェクト
               </Link>
-              <Link href="/videofunding" className="text-sm font-bold hover:text-white">
+              <Link href="/videofunding" className="text-sm sm:text-xl font-bold hover:text-white">
                 動画一覧
               </Link>
-              <a href="/faq" className="text-sm font-bold hover:text-white">
+              <a href="/faq" className="text-sm sm:text-xl font-bold hover:text-white">
                 よくある質問
               </a>
-              <a href="/user-settings" className="text-sm font-bold hover:text-white">
+              <a href="/user-settings" className="text-sm sm:text-xl font-bold hover:text-white">
                 ユーザー設定
               </a>
             </div>
 
             {/* Legal / Informational Links */}
             <div className="flex flex-col space-y-3">
-              <a href="#" className="text-sm font-bold hover:text-white">
+              <a href="#" className="text-sm sm:text-xl font-bold hover:text-white">
                 利用規約
               </a>
-              <a href="#" className="text-sm font-bold hover:text-white">
+              <a href="#" className="text-sm sm:text-xl font-bold hover:text-white">
                 プライバシーポリシー
               </a>
-              <a href="#" className="text-sm font-bold hover:text-white">
+              <a href="#" className="text-sm sm:text-xl font-bold hover:text-white">
                 特定商取引法に基づく表記
               </a>
-              <a href="#" className="text-sm font-bold hover:text-white">
+              <a href="#" className="text-sm sm:text-xl font-bold hover:text-white">
                 運営会社
               </a>
             </div>
@@ -64,7 +65,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-400 my-8"></div>
+        <div className="border-t border-gray-400 my-6"></div>
 
         {/* Copyright */}
         <div className="text-center">
@@ -83,7 +84,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation Sections */}
-          <div className="grid grid-cols-2 gap-6 md:gaap-0">
+          <div className=" grid grid-cols-2 gap-6 md:gap-0">
             {/* Main Content Navigation */}
             <div className="flex flex-col space-y-3">
               <Link href="/crowdfunding" className="text-sm font-bold hover:text-white">

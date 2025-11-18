@@ -23,27 +23,57 @@ const Navbar: React.FC<NavbarProps> = ({
   // Set logo based on page and screen size
   // Landing page: logo-landing-pc.png (>=768px), logo-landing-sp.png (<768px)
   // Non-landing page: logo-landing-pc-1.png (>=768px), logo-landing-sp-1.png (<768px)
-  const logoDesktop = isLanding 
-    ? "/assets/common/logo-landing-pc-1.png" 
+  const logoDesktop = isLanding
+    ? "/assets/common/logo-landing-pc-1.png"
     : "/assets/common/logo-landing-pc.png";
-  const logoMobile = isLanding 
-    ? "/assets/common/logo-landing-sp-1.png" 
+  const logoMobile = isLanding
+    ? "/assets/common/logo-landing-sp-1.png"
     : "/assets/common/logo-landing-sp.png";
 
   // Handle scroll event
   const textColor = theme === "dark" ? "text-white" : "text-black";
   const iconFill = theme === "dark" ? "white" : "black";
-  
+
   // Icon fill color for mobile search and menu icons
   // Landing page: always white, Non-landing: black on small screens, white on larger screens
   const mobileIconFillClass = isLanding 
     ? "fill-white" 
     : "fill-black lg:fill-white";
+  
+  // Icon stroke color for X icon (close button)
+  const mobileIconStrokeClass = isLanding 
+    ? "stroke-white" 
+    : "stroke-black lg:stroke-white";
+
+  // Handle scroll event for non-landing pages
+  useEffect(() => {
+    if (isLanding) return; // Don't handle scroll for landing page
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Check initial scroll position
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isLanding]);
+
+  // Background color for non-landing pages: white when scrolled, transparent at top
+  const navBackgroundClass = isLanding 
+    ? "" 
+    : isScrolled 
+      ? "bg-white" 
+      : "bg-transparent";
 
   return (
     <nav
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : "shadow-none"
-        } h-25 md:h-20`}
+        } ${navBackgroundClass} h-25 md:h-20`}
     >
       <div className="max-w-[1440px] 2xl:max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
@@ -54,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 {/* Mobile logo (visible on screens < 768px) */}
                 <img
                   src={logoMobile}
-                  className="md:hidden"
+                  className="w-[200px] sm:w-[270px] md:hidden"
                   alt=""
                 />
                 {/* Desktop logo (visible on screens >= 768px) */}
@@ -67,14 +97,14 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Desktop Nav Links */}
-            <div className="hidden xl:flex items-center space-x-4 lg:space-x-8">
+            <div className="hidden xl:flex items-center space-x-4 lg:space-x-[52px]">
               <Link
                 href="/"
                 className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
               >
                 <svg
-                  width="35"
-                  height="35"
+                  width="25"
+                  height="25"
                   viewBox="0 0 26 26"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -92,14 +122,14 @@ const Navbar: React.FC<NavbarProps> = ({
                     strokeWidth="0.10815"
                   />
                 </svg>
-                ホーム
+                <span className="text-sm">ホーム</span>
               </Link>
               <Link
                 href="/crowdfunding"
                 className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
               >
                 <svg
-                  width="35"
+                  width="25"
                   height="35"
                   viewBox="0 0 32 30"
                   fill="none"
@@ -136,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     strokeWidth="0.315"
                   />
                 </svg>
-                プロジェクト
+                <span className="text-sm">プロジェクト</span>
               </Link>
 
               <Link
@@ -144,8 +174,8 @@ const Navbar: React.FC<NavbarProps> = ({
                 className={`flex items-center gap-2 text-lg ${textColor} hover:text-red-600 transition-colors duration-200 font-semibold`}
               >
                 <svg
-                  width="35"
-                  height="35"
+                  width="25"
+                  height="25"
                   viewBox="0 0 30 27"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -175,7 +205,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     strokeWidth="0.1575"
                   />
                 </svg>
-                動画一覧
+                <span className="text-sm">動画一覧</span>
               </Link>
             </div>
           </div>
@@ -234,20 +264,26 @@ const Navbar: React.FC<NavbarProps> = ({
               className="p-2 rounded-full hover:cursor-pointer transition-colors ml-auto"
               aria-label="Search"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="37.191" height="40.828" className="md:w-[26.008px] md:h-[25.784px]" viewBox="0 0 38 41" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 38 41" fill="none">
                 <path d="M4.61536 5.05713C10.7968 -1.6858 20.7288 -1.6858 26.9103 5.05713C32.4924 11.1884 33.0089 20.8285 28.4523 27.6099L36.5011 36.4243C37.4155 37.4212 37.423 39.0543 36.5157 40.0669C36.0905 40.5456 35.509 40.8206 34.8995 40.8286C34.2829 40.8208 33.694 40.5379 33.2687 40.0435L25.1622 31.2319C22.4532 33.4393 19.1626 34.6481 15.7589 34.6353C11.5838 34.6508 7.57837 32.8293 4.61536 29.5796C-1.50189 22.8681 -1.54414 11.9339 4.52356 5.15967C4.55187 5.12832 4.57999 5.0885 4.61536 5.05713ZM15.7589 5.14404C12.8101 5.14417 9.98184 6.42333 7.89075 8.71533C3.60218 13.4251 3.56646 21.0942 7.81946 25.8433C7.84064 25.8667 7.86951 25.8979 7.89075 25.9214C12.2574 30.6862 19.275 30.6862 23.6417 25.9214C27.9304 21.2351 27.9804 13.5738 23.7413 8.82471C23.706 8.78557 23.6771 8.7545 23.6417 8.71533C21.5435 6.41545 18.7078 5.12834 15.7589 5.14404Z" className={mobileIconFillClass} />
               </svg>
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`px-2 py-2 rounded-md  text-3xl transition ${theme === "dark"
+              className={`flex items-center justify-center w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] rounded-md transition ${theme === "dark"
                 ? "text-white"
                 : "text-black"
                 }`}
             >
-              {isOpen ? "✖" : <svg xmlns="http://www.w3.org/2000/svg" width="57.508" height="57.508" className="md:w-[38px] md:h-[32px] hover:cursor-pointer " viewBox="0 0 58 58" fill="none">
-                <path d="M10.7835 41.3825C10.4433 41.3825 10.1589 41.2667 9.93051 41.0351C9.70208 40.8035 9.58706 40.5183 9.58547 40.1797C9.58387 39.841 9.69888 39.5567 9.93051 39.3266C10.1621 39.0966 10.4465 38.9824 10.7835 38.984H46.7259C47.0662 38.984 47.3505 39.099 47.579 39.329C47.809 39.559 47.924 39.8442 47.924 40.1844C47.924 40.5247 47.809 40.809 47.579 41.0375C47.3489 41.2659 47.0646 41.3801 46.7259 41.3801L10.7835 41.3825ZM10.7835 29.9528C10.4433 29.9528 10.1589 29.8378 9.93051 29.6078C9.70208 29.3778 9.58706 29.0926 9.58547 28.7524C9.58387 28.4121 9.69888 28.1278 9.93051 27.8993C10.1621 27.6709 10.4465 27.5567 10.7835 27.5567H46.7259C47.0662 27.5567 47.3505 27.6717 47.579 27.9017C47.8074 28.1318 47.9224 28.4169 47.924 28.7572C47.9256 29.0974 47.8106 29.3818 47.579 29.6102C47.3474 29.8386 47.063 29.9528 46.7259 29.9528H10.7835ZM10.7835 18.5232C10.4433 18.5232 10.1589 18.4089 9.93051 18.1805C9.70048 17.9505 9.58547 17.6653 9.58547 17.3251C9.58547 16.9848 9.70048 16.7005 9.93051 16.472C10.1605 16.2436 10.4449 16.1294 10.7835 16.1294H46.7259C47.0662 16.1294 47.3505 16.2444 47.579 16.4744C47.8074 16.7045 47.9224 16.988 47.924 17.3251C47.9256 17.6621 47.8106 17.9465 47.579 18.1781C47.3474 18.4097 47.063 18.5248 46.7259 18.5232H10.7835Z" className={mobileIconFillClass} />
-              </svg>}
+              {isOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:cursor-pointer" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6l12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={mobileIconStrokeClass} />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:cursor-pointer" viewBox="0 0 58 58" fill="none">
+                  <path d="M10.7835 41.3825C10.4433 41.3825 10.1589 41.2667 9.93051 41.0351C9.70208 40.8035 9.58706 40.5183 9.58547 40.1797C9.58387 39.841 9.69888 39.5567 9.93051 39.3266C10.1621 39.0966 10.4465 38.9824 10.7835 38.984H46.7259C47.0662 38.984 47.3505 39.099 47.579 39.329C47.809 39.559 47.924 39.8442 47.924 40.1844C47.924 40.5247 47.809 40.809 47.579 41.0375C47.3489 41.2659 47.0646 41.3801 46.7259 41.3801L10.7835 41.3825ZM10.7835 29.9528C10.4433 29.9528 10.1589 29.8378 9.93051 29.6078C9.70208 29.3778 9.58706 29.0926 9.58547 28.7524C9.58387 28.4121 9.69888 28.1278 9.93051 27.8993C10.1621 27.6709 10.4465 27.5567 10.7835 27.5567H46.7259C47.0662 27.5567 47.3505 27.6717 47.579 27.9017C47.8074 28.1318 47.9224 28.4169 47.924 28.7572C47.9256 29.0974 47.8106 29.3818 47.579 29.6102C47.3474 29.8386 47.063 29.9528 46.7259 29.9528H10.7835ZM10.7835 18.5232C10.4433 18.5232 10.1589 18.4089 9.93051 18.1805C9.70048 17.9505 9.58547 17.6653 9.58547 17.3251C9.58547 16.9848 9.70048 16.7005 9.93051 16.472C10.1605 16.2436 10.4449 16.1294 10.7835 16.1294H46.7259C47.0662 16.1294 47.3505 16.2444 47.579 16.4744C47.8074 16.7045 47.9224 16.988 47.924 17.3251C47.9256 17.6621 47.8106 17.9465 47.579 18.1781C47.3474 18.4097 47.063 18.5248 46.7259 18.5232H10.7835Z" className={mobileIconFillClass} />
+                </svg>
+              )}
             </button>
           </div>
         </div>

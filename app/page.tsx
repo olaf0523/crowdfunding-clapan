@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const LandingPage = () => {
   return (
-    <div className="relative bg-[url('/assets/mainPage/main-page-bg.png')] bg-cover bg-center min-h-screen bg-black">
+    <div className="relative bg-[url('/assets/mainPage/main-page-bg.png')] bg-cover bg-center h-auto bg-black">
       <div className="absolute inset-0 bg-[#24293b]/30 "></div>
 
       <main className="pt-16">
@@ -39,7 +39,7 @@ const LandingPage = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 justify-center items-center mx-auto px-6 sm:px-10 font-semibold text-md">
+            <div className="grid mb-[147px] sm:grid-cols-2 grid-cols-1 gap-4 justify-center items-center mx-auto px-6 sm:px-10 font-semibold text-md md:mb-[140px]">
               <Link
                 href="/crowdfunding"
                 className="w-full bg-[rgba(14,44,95,0.85)] border-2 border-[rgba(255,255,255,0.8)] text-white hover:bg-[rgba(14,44,95,0.85)]/80 px-8 py-5 sm:px-16 sm:py-8 rounded-full transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
